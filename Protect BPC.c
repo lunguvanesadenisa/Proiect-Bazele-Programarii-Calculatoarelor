@@ -103,12 +103,13 @@ void ShowResult(int* playerScores, int playerCount) {
 }
 
 void RunGame(int playerCount, struct DiceSide diceSide[6]) {
-	int gameFinished = 0, currentPlayer = 0;
+	int gameFinished = 0, currentPlayer = 0, current=1;
 	struct Pair dicePair;
 	long* playerScores;
 	playerScores = (long*)calloc(playerCount, sizeof(long));
 	while (!gameFinished) {
-		printf("Player %d: Press any key to roll the dice\n", currentPlayer);
+		printf("Player %d: Press any key to roll the dice\n", current);
+		current++;
 		getch();
 		dicePair = RollDice();
 		playerScores[currentPlayer] = dicePair.value1 + dicePair.value2;
@@ -131,5 +132,6 @@ void StartGame() {
 }
 
 int main() {
+	printf("Enter the number of players: ");
 	StartGame();
 }
